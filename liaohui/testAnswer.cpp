@@ -320,5 +320,328 @@ int main()
 	return 0;
 }
 
+/*用冒泡法对10个整数排序*/
+#include<stdio.h>
+int main(){
+	int a[10] = { 1, 2, 5, 6, 12, 56, 3, 64, 78, 10 };
+	for (int i = 0; i < 9; i++){
+		for (int j = 0; j < 9 - i; j++){
+			if (a[j] > a[j + 1]){
+				int t = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = t;
+			}
+		}
+	}	
+	for (int i = 0; i < 10; i++){
+		printf("%d ", a[i]);
+	}	
+	return 0;
+}
+
+/*写一个冒泡排序的函数*/
+#include<stdio.h>
+int main(){
+	int sort1(int a[]);
+	int b[10] = { 1, 2, 5, 6, 12, 56, 3, 64, 78, 10 };
+	sort1(b);
+	for (int i = 0; i < 10; i++){
+		printf("%d ", b[i]);
+	}	
+	return 0;
+}
+int sort1(int a[]){
+	for (int i = 0; i < 9; i++){
+		for (int j = 0; j < 9 - i; j++){
+			if (a[j] > a[j + 1]){
+				int t = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = t;
+			}
+		}
+	}
+	return 0;
+}
+
+/*选择法对10个整数从小到大排序*/
+#include<stdio.h>
+int main(){
+	int a[10] = { 1, 2, 5, 6, 12, 56, 3, 64, 78, 10 };
+	for (int i = 0; i < 9; i++){
+		int pos = i, min = a[pos];
+		for (int j = i + 1; j < 10; j++){
+			if (min > a[j]){
+				pos = j;
+				min = a[j];
+			}
+		}
+		int t = a[pos];
+		a[pos] = a[i];
+		a[i] = t; 
+	}
+	for (int i = 0; i < 10; i++){
+		printf("%d ", a[i]);
+	}
+	return 0;
+}
+
+
+/*写一个选择排序的函数在主函数调用对10个整数从小到大进行排序*/
+#include<stdio.h>
+int main(){
+	int sort2(int a[]);
+	int b[10] = { 1, 2, 5, 6, 12, 56, 3, 64, 78, 10 };
+	sort2(b);
+	for (int i = 0; i < 10; i++){
+		printf("%d ", b[i]);
+	}	
+	return 0;
+}
+int sort2(int a[]){
+	for (int i = 0; i < 9; i++){
+		int pos = i, min = a[pos];
+		for (int j = i + 1; j < 10; j++){
+			if (min > a[j]){
+				pos = j;
+				min = a[j];
+			}
+		}
+		int t = a[pos];
+		a[pos] = a[i];
+		a[i] = t;
+	}
+	return 0;
+}
+
+/*将两个字符串连接起来，不使用strcat函数*/
+#include <stdio.h>
+int main(){
+	char s1[80], s2[40];
+	int i = 0, j = 0;
+	printf("input string1:");
+	scanf("%s", s1);
+	printf("input string2:");
+	scanf("%s", s2);
+	while (s1[i] != '\0')
+		i++;
+	while (s2[j] != '\0')
+		s1[i++] = s2[j++];
+	s1[i] = '\0';
+	printf("\nThe new string is:%s\n", s1);
+	return 0;
+}
+
+/*写一个函数，将两个字符串连接，在主函数中输出连接后的字符串*/
+#include <stdio.h>
+int main(){
+	void connect(char s1[],char s2[]);
+	char c1[80], c2[40];	
+	printf("input string1:");
+	scanf("%s", c1);
+	printf("input string2:");
+	scanf("%s", c2);
+	connect(c1,c2);
+	printf("\nThe new string is:%s\n", c1);
+	return 0;
+}
+void connect(char s1[],char s2[]){
+	int i = 0, j = 0;
+	while (s1[i] != '\0')
+		i++;
+	while (s2[j] != '\0')
+		s1[i++] = s2[j++];
+	s1[i] = '\0';
+}
+
+/*利用函数递归调用输出Fibonacci数列前20项*/
+#include<stdio.h>
+//递归
+int Fabio1(int n){
+	if(n == 1||n ==2){
+		return 1;
+	}else{
+		return Fabio(n-1) + Fabio(n-2);
+	}
+} 
+int main(){
+	for(int i=1;i<=20;i++){
+		printf("%2d",Fabio1(i));
+	}
+	printf("\n");
+	return 0;
+}
+
+/*利用循环求n!*/
+#include<stdio.h>
+int main(){
+	int n;  
+	int y;
+	printf("input an integer number:");
+	scanf("%d",&n);  
+	int y=1;
+	for(int i=2;i<=n;i++){
+		y=y*i;	
+	}
+	printf("%d!=%d\n",n,y);
+	return 0;
+}
+
+/*利用递归方法求n!*/
+#include <stdio.h>
+int main(){
+	int fac(int n); 
+	int n;  
+	int y;
+	printf("input an integer number:");
+	scanf("%d",&n);  
+	y=fac(n);
+	printf("%d!=%d\n",n,y);
+	return 0;
+}
+int fac(int n){
+     int f;
+     if(n<0){
+     	printf("n<0,data error!");
+     }else if(n==0 | | n==1){
+     	f=1;
+     }else{
+     	f=fac(n-1)*n; 
+     }
+     return(f);
+ }
+
+
+/*分别输出一个3*3的整形矩阵两条对角线元素之和*/
+#include<stdio.h>
+int main(){
+	int a[3][3] = { 1, 2, 6, 4, 5, 6, 7, 8, 9 };
+	int sum1 = 0, sum2 = 0;
+	for (int i = 0; i < 3; i++){
+		sum1 = sum1 + a[i][i];
+		sum2 = sum2 + a[i][2 - i];
+	}
+	printf("sum1=%d ,sum2=%d ", sum1, sum2);
+	return 0;
+}
+
+/*写一个函数，在自定义函数中分别输出一个3*3的整形矩阵两条对角线元素之和*/
+#include<stdio.h>
+int main(){
+	int diaSum(int a[][3]);
+	int b[3][3] = { 1, 2, 6, 4, 5, 6, 7, 8, 9 };
+	diaSum(b);
+	return 0;
+}
+int diaSum(int a[][3]){
+	int sum1 = 0, sum2 = 0;
+	for (int i = 0; i < 3; i++){
+		sum1 = sum1 + a[i][i];
+		sum2 = sum2 + a[i][2 - i];
+	}
+	printf("sum1=%d ,sum2=%d ", sum1, sum2);
+	return 0;
+}
+
+/*写一个函数，在main函数中分别输出一个3*3的整形矩阵两条对角线元素之和*/
+#include<stdio.h>
+int main(){
+	int diaSum(int a[][3],int sum[2]);
+	int b[3][3] = { 1, 2, 6, 4, 5, 6, 7, 8, 9 };
+	int s[2] = { 0, 0 };
+	diaSum(b,s);
+	printf("sum1=%d ,sum2=%d ", s[0], s[1]);
+	return 0;
+}
+int diaSum(int a[][3],int s[2]){
+	int sum1 = 0, sum2 = 0;
+	for (int i = 0; i < 3; i++){
+		s[0] = s[0] + a[i][i];
+		s[1] = s[1] + a[i][2 - i];
+	}
+	return 0;
+}
+
+/*输入一个四位数字，要求输出这4个数字字符*/
+#include <stdio.h>
+int main(){
+	int a;
+	scanf("%d",&a);
+	if (a / 1000 >9 || a / 1000 < 1){
+		printf("请输入四位数字！");
+		scanf("%d", &a);
+		if (a / 1000 >9 || a / 1000 < 1 ){
+			return 0;
+		}	
+	}
+	char b[4];
+	b[0] = a / 1000 + 48;
+	b[1] = (a % 1000) / 100 + 48;
+	b[2] = ((a % 1000) % 100) / 10 + 48;
+	b[3] = ((a % 1000) % 100) % 10 + 48;
+	for (int i = 0; i < 4; i++){
+		printf("%c ", b[i]);
+	}
+	return 0;	
+}
+
+
+/*写一个函数，输入一个四位数字，在自定义函数中要求输出*/
+#include <stdio.h>
+int main(){
+	void change(int num);
+	int a;
+	scanf("%d", &a);
+	if (a / 1000 >9 || a / 1000 < 1){
+		printf("请输入四位数字！");
+		scanf("%d", &a);
+		if (a / 1000 >9 || a / 1000 < 1){
+			return 0;
+		}
+	}
+	change(a);
+	return 0;
+}
+
+void change(int num){
+	char b[4];
+	b[0] = num / 1000 + 48;
+	b[1] = (num % 1000) / 100 + 48;
+	b[2] = ((num % 1000) % 100) / 10 + 48;
+	b[3] = ((num % 1000) % 100) % 10 + 48;
+	for (int i = 0; i < 4; i++){
+		printf("%c ", b[i]);
+	}	
+}
+
+
+/*写一个函数，输入一个四位数字，在main函数中要求输出*/
+#include <stdio.h>
+int main(){
+	void change(int num,char str[4]);
+	int a;
+	scanf("%d", &a);
+	if (a / 1000 >9 || a / 1000 < 1){
+		printf("请输入四位数字！");
+		scanf("%d", &a);
+		if (a / 1000 >9 || a / 1000 < 1){
+			return 0;
+		}	
+	}
+	char b[4];
+	change(a,b);
+	for (int i = 0; i < 4; i++){
+		printf("%c ", b[i]);
+	}	
+	return 0;
+}
+
+void change(int num, char str[4]){
+	str[0] = num / 1000 + 48;
+	str[1] = (num % 1000) / 100 + 48;
+	str[2] = ((num % 1000) % 100) / 10 + 48;
+	str[3] = ((num % 1000) % 100) % 10 + 48;
+}
+
+
 
 
